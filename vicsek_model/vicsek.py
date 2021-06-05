@@ -5,7 +5,7 @@ from numpy.lib.function_base import average
 A code to implement the vicsek model.
 """
 
-# Set up all the parameters for the simulations
+# Set up all the parameters for the simulations.
 L = 10
 N = 100
 R = 1
@@ -14,6 +14,7 @@ delta_t = 1
 eta = 0.2
 final_t = 20
 
+# The parameters that are pre-defined.
 positions = np.random.uniform(0, L, size=(N, 2))
 directions = np.random.uniform(-np.pi, np.pi, size=N)
 t0 = 0
