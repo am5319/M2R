@@ -17,14 +17,13 @@ final_t = 20
 # The parameters that are pre-defined.
 positions = np.random.uniform(0, L, size=(N, 2))
 directions = np.random.uniform(-np.pi, np.pi, size=N)
-t0 = 0
 v_x = v * np.cos(directions)
 v_y = v * np.sin(directions)
 v_list = np.column_stack((v_x, v_y))
 R_sq = R**2
 
 
-def step(N, R, delta_t, eta, positions, directions):
+def step(positions, directions, L, N, R, delta_t, eta, v_list):
     average_angle_list = []
     new_positions = positions + (delta_t * v_list)
     for i in range(N):
@@ -41,5 +40,12 @@ def step(N, R, delta_t, eta, positions, directions):
         average_angle_list.append(average_angle)
     average_angle_array = np.array(average_angle_list)
     directions = average_angle_array + np.random.uniform(-eta/2, eta/2, size=N)
-    positions = new_positions
+    positions = new_positions % L
+    return positions, directions
+
+
+def simulate(positions, directions, N, R, delta_t, eta, final_t):
+    for i in range(0, final_t, delta_t):
+        positions, directions = step(positions, directions, L, N, R, delta_t,
+                                     eta, v_list)
     return positions, directions
