@@ -14,7 +14,7 @@ delta_t = 1
 eta = 0.2
 final_t = 20
 
-# The parameters that are pre-defined.
+# Pre-determined and random parameters
 positions = np.random.uniform(0, L, size=(N, 2))
 directions = np.random.uniform(-np.pi, np.pi, size=N)
 v_x = v * np.cos(directions)
