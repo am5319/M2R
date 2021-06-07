@@ -60,3 +60,4 @@ positions, directions, v_x, v_y = simulate(positions, directions, L, N, R,
 x_pos, y_pos = np.hsplit(positions, 2)
 
 plt.quiver(x_pos, y_pos, v_x, v_y)
+plt.show()
