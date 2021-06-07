@@ -53,3 +53,10 @@ def simulate(positions, directions, L, N, R, delta_t, eta, v_list, final_t):
         v_y = v * np.sin(directions)
         v_list = np.column_stack((v_x, v_y))
     return positions, directions, v_x, v_y
+
+
+positions, directions, v_x, v_y = simulate(positions, directions, L, N, R,
+                                           delta_t, eta, v_list, final_t)
+x_pos, y_pos = np.hsplit(positions, 2)
+
+plt.quiver(x_pos, y_pos, v_x, v_y)
