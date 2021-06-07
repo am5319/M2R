@@ -1,5 +1,6 @@
 import numpy as np
 from numpy.lib.function_base import average
+import matplotlib.pyplot as plt
 
 """
 A code to implement the vicsek model.
@@ -44,8 +45,11 @@ def step(positions, directions, L, N, R, delta_t, eta, v_list):
     return positions, directions
 
 
-def simulate(positions, directions, N, R, delta_t, eta, final_t):
+def simulate(positions, directions, L, N, R, delta_t, eta, v_list, final_t):
     for i in range(0, final_t, delta_t):
         positions, directions = step(positions, directions, L, N, R, delta_t,
                                      eta, v_list)
-    return positions, directions
+        v_x = v * np.cos(directions)
+        v_y = v * np.sin(directions)
+        v_list = np.column_stack((v_x, v_y))
+    return positions, directions, v_x, v_y
