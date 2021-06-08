@@ -7,13 +7,13 @@ A code to implement the vicsek model.
 """
 
 # Set up all the parameters for the simulations.
-L = 10
-N = 100
+L = 5
+N = 300
 R = 1
-v = 1
+v = 0.03
+eta = 0.1
 delta_t = 1
-eta = 0.2
-final_t = 20
+final_t = 100
 
 # Pre-determined and random parameters
 positions = np.random.uniform(0, L, size=(N, 2))
@@ -35,7 +35,7 @@ def step(positions, directions, L, N, R, delta_t, eta, v_list):
                 y_ij = positions[i][1] - positions[j][1]
                 if abs(y_ij) < R:
                     r_ijsq = x_ij**2 + y_ij**2
-                    if r_ijsq < R_sq:
+                    if r_ijsq < R_sq and i != j:
                         neighbour_angles.append(directions[j])
         average_angle = average(neighbour_angles)
         average_angle_list.append(average_angle)
