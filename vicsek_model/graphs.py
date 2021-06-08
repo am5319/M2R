@@ -2,23 +2,6 @@ import numpy as np
 from numpy.lib.function_base import average
 import matplotlib.pyplot as plt
 
-# Set up all the parameters for the simulations.
-L = 5
-N = 300
-R = 1
-v = 0.03
-eta = 0.1
-delta_t = 1
-final_t = 20
-
-# Pre-determined and random parameters
-positions = np.random.uniform(0, L, size=(N, 2))
-directions = np.random.uniform(-np.pi, np.pi, size=N)
-v_x = v * np.cos(directions)
-v_y = v * np.sin(directions)
-v_list = np.column_stack((v_x, v_y))
-R_sq = R**2
-
 
 def step(positions, directions, L, N, R, delta_t, eta, v_list):
     average_angle_list = []
@@ -51,8 +34,26 @@ def simulate(positions, directions, L, N, R, delta_t, eta, v_list, final_t):
     return positions, directions, v_x, v_y
 
 
+# Set up all the parameters for the simulations.
+rho = 4
+R = 1
+v = 0.03
+delta_t = 1
+final_t = 20
+
+# Pre-determined and random parameters
+R_sq = R**2
+
+
 eta_list = np.arange(0, 5, 0.1)
+
+N, L = 50, np.sqrt(50 / rho)
 order_param_list_50 = []
+positions = np.random.uniform(0, L, size=(N, 2))
+directions = np.random.uniform(-np.pi, np.pi, size=N)
+v_x = v * np.cos(directions)
+v_y = v * np.sin(directions)
+v_list = np.column_stack((v_x, v_y))
 
 for i in eta_list:
     new_positions, new_directions, new_v_x, new_v_y = simulate(
@@ -64,7 +65,13 @@ for i in eta_list:
     order_param_list_50.append(order_param)
 
 
+N, L = 100, np.sqrt(100 / rho)
 order_param_list_100 = []
+positions = np.random.uniform(0, L, size=(N, 2))
+directions = np.random.uniform(-np.pi, np.pi, size=N)
+v_x = v * np.cos(directions)
+v_y = v * np.sin(directions)
+v_list = np.column_stack((v_x, v_y))
 
 for i in eta_list:
     new_positions, new_directions, new_v_x, new_v_y = simulate(
@@ -75,7 +82,13 @@ for i in eta_list:
     order_param_list_100.append(order_param)
 
 
+N, L = 500, np.sqrt(500 / rho)
 order_param_list_500 = []
+positions = np.random.uniform(0, L, size=(N, 2))
+directions = np.random.uniform(-np.pi, np.pi, size=N)
+v_x = v * np.cos(directions)
+v_y = v * np.sin(directions)
+v_list = np.column_stack((v_x, v_y))
 
 for i in eta_list:
     new_positions, new_directions, new_v_x, new_v_y = simulate(
@@ -87,7 +100,13 @@ for i in eta_list:
     order_param_list_500.append(order_param)
 
 
+N, L = 5000, np.sqrt(5000 / rho)
 order_param_list_5000 = []
+positions = np.random.uniform(0, L, size=(N, 2))
+directions = np.random.uniform(-np.pi, np.pi, size=N)
+v_x = v * np.cos(directions)
+v_y = v * np.sin(directions)
+v_list = np.column_stack((v_x, v_y))
 
 for i in eta_list:
     new_positions, new_directions, new_v_x, new_v_y = simulate(
@@ -99,7 +118,13 @@ for i in eta_list:
     order_param_list_5000.append(order_param)
 
 
+N, L = 10000, np.sqrt(10000 / rho)
 order_param_list_10000 = []
+positions = np.random.uniform(0, L, size=(N, 2))
+directions = np.random.uniform(-np.pi, np.pi, size=N)
+v_x = v * np.cos(directions)
+v_y = v * np.sin(directions)
+v_list = np.column_stack((v_x, v_y))
 
 for i in eta_list:
     new_positions, new_directions, new_v_x, new_v_y = simulate(
