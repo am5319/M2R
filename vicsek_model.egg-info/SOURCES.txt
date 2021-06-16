@@ -1,0 +1,8 @@
+setup.py
+vicsek_model/__init__.py
+vicsek_model/graphs.py
+vicsek_model/vicsek.py
+vicsek_model.egg-info/PKG-INFO
+vicsek_model.egg-info/SOURCES.txt
+vicsek_model.egg-info/dependency_links.txt
+vicsek_model.egg-info/top_level.txt
